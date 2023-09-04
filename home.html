@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Recommendation System</title>
+</head>
+<body>
+    <h1>Book Recommendation System</h1>
+
+    <form method="POST">
+        <label for="user_id">Enter User ID:</label>
+        <input type="text" name="user_id" id="user_id" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if recommendations %}
+        <h2>Top 10 Book Recommendations:</h2>
+        <ul>
+            {% for book_id, est_rating in recommendations %}
+                <li>{{ book_id }} (Estimated Rating: {{ est_rating }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
